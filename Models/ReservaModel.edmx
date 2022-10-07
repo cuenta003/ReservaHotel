@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="cti_reservacionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="recibo">
+          <Key>
+            <PropertyRef Name="ReciboId" />
+          </Key>
+          <Property Name="ReciboId" Type="int" Nullable="false" />
+          <Property Name="ReservacionId" Type="int" />
+          <Property Name="HabitacionId" Type="int" />
+          <Property Name="TotalPrecio" Type="float" />
+          <Property Name="PagoId" Type="int" />
+        </EntityType>
+        <EntityType Name="cliente">
+          <Key>
+            <PropertyRef Name="ClienteId" />
+          </Key>
+          <Property Name="ClienteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="correolectronico" Type="varchar" MaxLength="255" />
+          <Property Name="PrimerNombre" Type="varchar" MaxLength="255" />
+          <Property Name="SegundoNombre" Type="varchar" MaxLength="255" />
+          <Property Name="PrimerApellido" Type="varchar" MaxLength="255" />
+          <Property Name="SegundoApellido" Type="varchar" MaxLength="255" />
+          <Property Name="NumeroTelefonico" Type="varchar" MaxLength="255" />
+          <Property Name="PasswordHash" Type="varbinary" MaxLength="1024" />
+          <Property Name="PasswordSalt" Type="varbinary" MaxLength="1024" />
+          <Property Name="Clave" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="habitacion">
+          <Key>
+            <PropertyRef Name="HabitacionId" />
+          </Key>
+          <Property Name="HabitacionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titulo" Type="varchar" MaxLength="255" />
+          <Property Name="URLImagen" Type="varchar(max)" />
+          <Property Name="Precio" Type="float" />
+          <Property Name="NCamas" Type="int" />
+          <Property Name="TV" Type="bit" />
+          <Property Name="SanitarioPrivado" Type="bit" />
+          <Property Name="AC" Type="bit" />
+        </EntityType>
+        <EntityType Name="pago">
+          <Key>
+            <PropertyRef Name="PagoId" />
+          </Key>
+          <Property Name="PagoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RecervacionId" Type="int" />
+          <Property Name="TotalPagado" Type="float" />
+          <Property Name="FechaPago" Type="datetime2" Precision="0" />
+        </EntityType>
+        <EntityType Name="reservacion">
+          <Key>
+            <PropertyRef Name="ReservacionId" />
+          </Key>
+          <Property Name="ReservacionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaInicio" Type="datetime2" Precision="0" />
+          <Property Name="FechaFinal" Type="datetime2" Precision="0" />
+          <Property Name="Titulo" Type="varchar" MaxLength="255" />
+          <Property Name="HabitacionId" Type="int" />
+          <Property Name="Total" Type="float" />
+          <Property Name="ClienteId" Type="int" />
+        </EntityType>
+        <EntityContainer Name="cti_reservacionModelStoreContainer">
+          <EntitySet Name="recibo" EntityType="Self.recibo" Schema="cti_reservacion" store:Type="Tables" />
+          <EntitySet Name="cliente" EntityType="Self.cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="habitacion" EntityType="Self.habitacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pago" EntityType="Self.pago" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="reservacion" EntityType="Self.reservacion" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="cti_reservacionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="cliente">
+          <Key>
+            <PropertyRef Name="ClienteId" />
+          </Key>
+          <Property Name="ClienteId" Type="Int32" Nullable="false" />
+          <Property Name="correolectronico" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PrimerNombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SegundoNombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PrimerApellido" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SegundoApellido" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroTelefonico" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Clave" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PasswordHash" Type="Binary" MaxLength="1024" FixedLength="false" />
+          <Property Name="PasswordSalt" Type="Binary" MaxLength="1024" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="habitacion">
+          <Key>
+            <PropertyRef Name="HabitacionId" />
+          </Key>
+          <Property Name="HabitacionId" Type="Int32" Nullable="false" />
+          <Property Name="Titulo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="URLImagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Precio" Type="Double" />
+          <Property Name="NCamas" Type="Int32" />
+          <Property Name="TV" Type="Boolean" />
+          <Property Name="SanitarioPrivado" Type="Boolean" />
+          <Property Name="AC" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="pago">
+          <Key>
+            <PropertyRef Name="PagoId" />
+          </Key>
+          <Property Name="PagoId" Type="Int32" Nullable="false" />
+          <Property Name="RecervacionId" Type="Int32" />
+          <Property Name="TotalPagado" Type="Double" />
+          <Property Name="FechaPago" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="reservacion">
+          <Key>
+            <PropertyRef Name="ReservacionId" />
+          </Key>
+          <Property Name="ReservacionId" Type="Int32" Nullable="false" />
+          <Property Name="FechaInicio" Type="DateTime" Precision="0" />
+          <Property Name="FechaFinal" Type="DateTime" Precision="0" />
+          <Property Name="Titulo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="HabitacionId" Type="Int32" />
+          <Property Name="Total" Type="Double" />
+          <Property Name="ClienteId" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="cti_reservacionEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="cliente" EntityType="Self.cliente" />
+          <EntitySet Name="habitacion" EntityType="Self.habitacion" />
+          <EntitySet Name="pago" EntityType="Self.pago" />
+          <EntitySet Name="reservacion" EntityType="Self.reservacion" />
+          <EntitySet Name="recibo" EntityType="cti_reservacionModel.recibo" />
+        </EntityContainer>
+        <EntityType Name="recibo">
+          <Key>
+            <PropertyRef Name="ReciboId" />
+          </Key>
+          <Property Name="ReciboId" Type="Int32" Nullable="false" />
+          <Property Name="ReservacionId" Type="Int32" />
+          <Property Name="HabitacionId" Type="Int32" />
+          <Property Name="TotalPrecio" Type="Double" />
+          <Property Name="PagoId" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="cti_reservacionModelStoreContainer" CdmEntityContainer="cti_reservacionEntities">
+          <EntitySetMapping Name="cliente">
+            <EntityTypeMapping TypeName="cti_reservacionModel.cliente">
+              <MappingFragment StoreEntitySet="cliente">
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+                <ScalarProperty Name="correolectronico" ColumnName="correolectronico" />
+                <ScalarProperty Name="PrimerNombre" ColumnName="PrimerNombre" />
+                <ScalarProperty Name="SegundoNombre" ColumnName="SegundoNombre" />
+                <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+                <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+                <ScalarProperty Name="NumeroTelefonico" ColumnName="NumeroTelefonico" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="habitacion">
+            <EntityTypeMapping TypeName="cti_reservacionModel.habitacion">
+              <MappingFragment StoreEntitySet="habitacion">
+                <ScalarProperty Name="HabitacionId" ColumnName="HabitacionId" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="URLImagen" ColumnName="URLImagen" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="NCamas" ColumnName="NCamas" />
+                <ScalarProperty Name="TV" ColumnName="TV" />
+                <ScalarProperty Name="SanitarioPrivado" ColumnName="SanitarioPrivado" />
+                <ScalarProperty Name="AC" ColumnName="AC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pago">
+            <EntityTypeMapping TypeName="cti_reservacionModel.pago">
+              <MappingFragment StoreEntitySet="pago">
+                <ScalarProperty Name="PagoId" ColumnName="PagoId" />
+                <ScalarProperty Name="RecervacionId" ColumnName="RecervacionId" />
+                <ScalarProperty Name="TotalPagado" ColumnName="TotalPagado" />
+                <ScalarProperty Name="FechaPago" ColumnName="FechaPago" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reservacion">
+            <EntityTypeMapping TypeName="cti_reservacionModel.reservacion">
+              <MappingFragment StoreEntitySet="reservacion">
+                <ScalarProperty Name="ReservacionId" ColumnName="ReservacionId" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="FechaFinal" ColumnName="FechaFinal" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="HabitacionId" ColumnName="HabitacionId" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="recibo">
+            <EntityTypeMapping TypeName="cti_reservacionModel.recibo">
+              <MappingFragment StoreEntitySet="recibo">
+                <ScalarProperty Name="PagoId" ColumnName="PagoId" />
+                <ScalarProperty Name="TotalPrecio" ColumnName="TotalPrecio" />
+                <ScalarProperty Name="HabitacionId" ColumnName="HabitacionId" />
+                <ScalarProperty Name="ReservacionId" ColumnName="ReservacionId" />
+                <ScalarProperty Name="ReciboId" ColumnName="ReciboId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

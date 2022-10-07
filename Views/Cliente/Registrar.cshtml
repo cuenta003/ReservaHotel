@@ -1,0 +1,88 @@
+﻿@model ReservaHotel.Models.cliente
+
+@{
+    ViewBag.Title = "Registrar";
+}
+
+<h2>Registrar</h2>
+
+@using (Html.BeginForm("Registrar", "Cliente", FormMethod.Post))
+{
+    <fieldset>
+
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+
+        @if (@ViewBag.Message != null)
+        {
+            <div class="alert alert-warning">
+                @ViewBag.Message
+            </div>
+        }
+
+        <section id="formInsertar">
+            <div class="container">
+                <div class="card" style="width:600px;">
+
+                    <div class="card-header">
+                        <h4>Ingrese Datos de Nuevo Usuario</h4>
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="form-group">
+                            <div class="col-sm-4"><label>Usuario/correo</label></div>
+                            <div class="col-sm-8">@Html.TextBoxFor(a => a.correolectronico, new { @type = "email", @class = "form-control" })</div>
+                            @Html.ValidationMessageFor(a => a.correolectronico, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-4"><label>Primer Nombre</label></div>
+                            <div class="col-sm-8">@Html.TextBoxFor(a => a.PrimerNombre, new { @type = "text", @class = "form-control" })</div>
+                            @Html.ValidationMessageFor(a => a.PrimerNombre, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-4"><label>Segundo Nombre</label></div>
+                            <div class="col-sm-8">@Html.TextBoxFor(a => a.SegundoNombre, new { @type = "text", @class = "form-control" })</div>
+                            @Html.ValidationMessageFor(a => a.SegundoNombre, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-4"><label>Primer Apellido</label></div>
+                            <div class="col-sm-8">@Html.TextBoxFor(a => a.PrimerApellido, new { @type = "text", @class = "form-control" })</div>
+                            @Html.ValidationMessageFor(a => a.PrimerApellido, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-4"><label>Segundo Apellido</label></div>
+                            <div class="col-sm-8">@Html.TextBoxFor(a => a.SegundoApellido, new { @type = "text", @class = "form-control" })</div>
+                            @Html.ValidationMessageFor(a => a.SegundoApellido, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-4"><label>Numero Telefónico</label></div>
+                            <div class="col-sm-8">@Html.TextBoxFor(a => a.NumeroTelefonico, new { @type = "text", @class = "form-control" })</div>
+                            @Html.ValidationMessageFor(a => a.NumeroTelefonico, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-4"><label>Clave/Password</label></div>
+                            <div class="col-sm-8">@Html.TextBoxFor(a => a.Clave, new { @type = "password", @class = "form-control" })</div>
+                            @Html.ValidationMessageFor(a => a.Clave, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="modal-footer m-1">
+                            <button type="submit" class="btn btn-success m-1">Crear</button>
+                            @Html.ActionLink("Cancelar", "Authenticate", null, new { @class = "btn btn-danger m-1" })
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </fieldset>
+}

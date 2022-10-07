@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="cti_reservacionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="cliente">
+    <Key>
+      <PropertyRef Name="ClienteId" />
+    </Key>
+    <Property Name="ClienteId" Type="Int32" Nullable="false" />
+    <Property Name="correolectronico" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PrimerNombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="SegundoNombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PrimerApellido" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="SegundoApellido" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="NumeroTelefonico" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Clave" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PasswordHash" Type="Binary" MaxLength="1024" FixedLength="false" />
+    <Property Name="PasswordSalt" Type="Binary" MaxLength="1024" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="habitacion">
+    <Key>
+      <PropertyRef Name="HabitacionId" />
+    </Key>
+    <Property Name="HabitacionId" Type="Int32" Nullable="false" />
+    <Property Name="Titulo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="URLImagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Precio" Type="Double" />
+    <Property Name="NCamas" Type="Int32" />
+    <Property Name="TV" Type="Boolean" />
+    <Property Name="SanitarioPrivado" Type="Boolean" />
+    <Property Name="AC" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="pago">
+    <Key>
+      <PropertyRef Name="PagoId" />
+    </Key>
+    <Property Name="PagoId" Type="Int32" Nullable="false" />
+    <Property Name="RecervacionId" Type="Int32" />
+    <Property Name="TotalPagado" Type="Double" />
+    <Property Name="FechaPago" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="reservacion">
+    <Key>
+      <PropertyRef Name="ReservacionId" />
+    </Key>
+    <Property Name="ReservacionId" Type="Int32" Nullable="false" />
+    <Property Name="FechaInicio" Type="DateTime" Precision="0" />
+    <Property Name="FechaFinal" Type="DateTime" Precision="0" />
+    <Property Name="Titulo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="HabitacionId" Type="Int32" />
+    <Property Name="Total" Type="Double" />
+    <Property Name="ClienteId" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="cti_reservacionEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="cliente" EntityType="Self.cliente" />
+    <EntitySet Name="habitacion" EntityType="Self.habitacion" />
+    <EntitySet Name="pago" EntityType="Self.pago" />
+    <EntitySet Name="reservacion" EntityType="Self.reservacion" />
+    <EntitySet Name="recibo" EntityType="cti_reservacionModel.recibo" />
+  </EntityContainer>
+  <EntityType Name="recibo">
+    <Key>
+      <PropertyRef Name="ReciboId" />
+    </Key>
+    <Property Name="ReciboId" Type="Int32" Nullable="false" />
+    <Property Name="ReservacionId" Type="Int32" />
+    <Property Name="HabitacionId" Type="Int32" />
+    <Property Name="TotalPrecio" Type="Double" />
+    <Property Name="PagoId" Type="Int32" />
+  </EntityType>
+</Schema>

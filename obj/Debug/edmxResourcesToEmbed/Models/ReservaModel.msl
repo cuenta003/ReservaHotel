@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="cti_reservacionModelStoreContainer" CdmEntityContainer="cti_reservacionEntities">
+    <EntitySetMapping Name="cliente">
+      <EntityTypeMapping TypeName="cti_reservacionModel.cliente">
+        <MappingFragment StoreEntitySet="cliente">
+          <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+          <ScalarProperty Name="correolectronico" ColumnName="correolectronico" />
+          <ScalarProperty Name="PrimerNombre" ColumnName="PrimerNombre" />
+          <ScalarProperty Name="SegundoNombre" ColumnName="SegundoNombre" />
+          <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+          <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+          <ScalarProperty Name="NumeroTelefonico" ColumnName="NumeroTelefonico" />
+          <ScalarProperty Name="Clave" ColumnName="Clave" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="habitacion">
+      <EntityTypeMapping TypeName="cti_reservacionModel.habitacion">
+        <MappingFragment StoreEntitySet="habitacion">
+          <ScalarProperty Name="HabitacionId" ColumnName="HabitacionId" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="URLImagen" ColumnName="URLImagen" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="NCamas" ColumnName="NCamas" />
+          <ScalarProperty Name="TV" ColumnName="TV" />
+          <ScalarProperty Name="SanitarioPrivado" ColumnName="SanitarioPrivado" />
+          <ScalarProperty Name="AC" ColumnName="AC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pago">
+      <EntityTypeMapping TypeName="cti_reservacionModel.pago">
+        <MappingFragment StoreEntitySet="pago">
+          <ScalarProperty Name="PagoId" ColumnName="PagoId" />
+          <ScalarProperty Name="RecervacionId" ColumnName="RecervacionId" />
+          <ScalarProperty Name="TotalPagado" ColumnName="TotalPagado" />
+          <ScalarProperty Name="FechaPago" ColumnName="FechaPago" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="reservacion">
+      <EntityTypeMapping TypeName="cti_reservacionModel.reservacion">
+        <MappingFragment StoreEntitySet="reservacion">
+          <ScalarProperty Name="ReservacionId" ColumnName="ReservacionId" />
+          <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+          <ScalarProperty Name="FechaFinal" ColumnName="FechaFinal" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="HabitacionId" ColumnName="HabitacionId" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="recibo">
+      <EntityTypeMapping TypeName="cti_reservacionModel.recibo">
+        <MappingFragment StoreEntitySet="recibo">
+          <ScalarProperty Name="PagoId" ColumnName="PagoId" />
+          <ScalarProperty Name="TotalPrecio" ColumnName="TotalPrecio" />
+          <ScalarProperty Name="HabitacionId" ColumnName="HabitacionId" />
+          <ScalarProperty Name="ReservacionId" ColumnName="ReservacionId" />
+          <ScalarProperty Name="ReciboId" ColumnName="ReciboId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

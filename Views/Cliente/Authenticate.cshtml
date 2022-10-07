@@ -1,0 +1,72 @@
+﻿@model ReservaHotel.Models.cliente
+
+@{
+    ViewBag.Title = "Authenticate";
+}
+
+<h2>LOGIN</h2>
+
+@using (Html.BeginForm("Authenticate", "Cliente", FormMethod.Post))
+{
+    <fieldset>
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        @if (@ViewBag.Message != null)
+        {
+            <div class="alert alert-warning">
+                @ViewBag.Message
+            </div>
+        }
+
+        <section id="formLogin">
+
+            <div class="container">
+                <div class="card" style="width: 400px;">
+                    <div class="card-header">
+                        <h4>Ingrese usuario y contraseña</h4>
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="form-group">
+                            <div class="row m-2">
+                                <div class="col-sm-4"><label>Usuario</label></div>
+                                <div class="col-sm-8">@Html.TextBoxFor(a => a.correolectronico, new { @class = "form-control" })</div>
+                            </div>
+                            @Html.ValidationMessageFor(a => a.correolectronico, "", new { @class = "text-danger" })
+
+                            <div class="row m-2">
+                                <div class="col-sm-4"><label>Clave</label></div>
+                                <div class="col-sm-8">@Html.PasswordFor(a => a.Clave, new { @class = "form-control", id = "passClave1", @autocomplete = "off" })</div>
+                            </div>
+                            @Html.ValidationMessageFor(a => a.Clave, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="row m-0 p-1">
+                            <div class="col-sm-6">
+                                <button type="submit" class="btn btn-success">Aceptar</button>
+                            </div>
+                            <div class="col-sm-6">
+                                @Html.ActionLink("Cancelar", "Authenticate", null, new { @class = "btn btn-danger m-1" })
+                            </div>
+                        </div>
+
+                        <hr />
+                        <div class="row m-0 p-1">
+                            <div class="col-sm-6">
+                                @Html.ActionLink("Registrar", "Registrar", null, new { @class = "" })
+                            </div>
+                            <div class="col-sm-6">
+                                @Html.ActionLink("Recuperar", "Recuperar", null, new { @class = "" })
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </fieldset>
+}
